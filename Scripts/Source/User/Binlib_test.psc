@@ -4,6 +4,7 @@ import Binlib
 Function TestSuites()
 	describe("Boolean Functions", BooleanTestSuite())
 	describe("Bitwise Functions", BitwiseTestSuite())
+	describe("Shift Functions", ShiftTestSuite())
 EndFunction
 
 bool Function BooleanTestSuite()
@@ -73,10 +74,69 @@ EndFunction
 
 bool Function BitwiseTestSuite()
 	it("BitwiseAND", BitwiseANDTestCases())
+	it("BitwiseNAND", BitwiseNANDTestCases())
+	it("BitwiseOR", BitwiseORTestCases())
+	it("BitwiseNOR", BitwiseNORTestCases())
+	it("BitwiseXOR", BitwiseXORTestCases())
+	it("BitwiseXNOR", BitwiseXNORTestCases())
+	it("BitwiseNOT", BitwiseNOTTestCases())
 	Return True
 EndFunction
 
 bool Function BitwiseANDTestCases()
 	expect(Binlib.BitwiseAND(255, 15), to, beEqualTo, 15)
+	Return True
+EndFunction
+
+bool Function BitwiseNANDTestCases()
+	expect(Binlib.BitwiseNAND(255, 15), to, beEqualTo, -16)
+	Return True
+EndFunction
+
+bool Function BitwiseORTestCases()
+	expect(Binlib.BitwiseOR(255, 15), to, beEqualTo, 255)
+	Return True
+EndFunction
+
+bool Function BitwiseNORTestCases()
+	expect(Binlib.BitwiseNOR(255, 15), to, beEqualTo, -256)
+	Return True
+EndFunction
+
+bool Function BitwiseXORTestCases()
+	expect(Binlib.BitwiseXOR(255, 15), to, beEqualTo, 240)
+	Return True
+EndFunction
+
+bool Function BitwiseXNORTestCases()
+	expect(Binlib.BitwiseXNOR(255, 15), to, beEqualTo, -241)
+	Return True
+EndFunction
+
+bool Function BitwiseNotTestCases()
+	expect(Binlib.BitwiseNOT(0), to, beEqualTo, -1)
+	Return True
+EndFunction
+
+bool Function ShiftTestSuite()
+	it("RightShift", RightShiftTestCases())
+	it("LeftShift", LeftShiftTestCases())
+	Return True
+EndFunction
+
+bool Function RightShiftTestCases()
+	expect(Binlib.RightShift(0, 1), to, beEqualTo, 0)
+	expect(Binlib.RightShift(1, 0), to, beEqualTo, 1)
+	expect(Binlib.RightShift(1, 1), to, beEqualTo, 0)
+	expect(Binlib.RightShift(2, 1), to, beEqualTo, 1)
+	Return True
+EndFunction
+
+bool Function LeftShiftTestCases()
+	expect(Binlib.LeftShift(0, 0), to, beEqualTo, 0)
+	expect(Binlib.LeftShift(1, 0), to, beEqualTo, 1)
+	expect(Binlib.LeftShift(1, 1), to, beEqualTo, 2)
+	expect(Binlib.LeftShift(2, 1), to, beEqualTo, 4)
+	expect(Binlib.LeftShift(-1, 1), to, beEqualTo, -2)
 	Return True
 EndFunction

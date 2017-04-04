@@ -108,6 +108,8 @@ int Function ArrayToInt(bool[] val) Global
 		x += x
 		i += 1
 	EndWhile
+	
+	Return ReturnValue
 EndFunction
 
 ; The docs say that using CallFunction is slower than a real function call

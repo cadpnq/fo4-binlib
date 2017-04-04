@@ -6,7 +6,7 @@ Function CallTimes(string fname, int times) Global
 	var[] args = new var[0]
 	
 	While(i < times)
-		Utility.CallGlobalFunction("Binlib_Profiling", fname, args)
+		Utility.CallGlobalFunction("Binlib_Profile", fname, args)
 		i += 1
 	EndWhile
 EndFunction
@@ -124,11 +124,35 @@ Function ProfileBitwiseNOR() Global
 	Binlib.BitwiseNOR(1431655765, -1431655766)
 EndFunction
 
+Function ProfileBitwiseXOR() Global
+	Binlib.BitwiseXOR(0, 0)
+	Binlib.BitwiseXOR(-1, -1)
+	Binlib.BitwiseXOR(65535, -65536)
+	Binlib.BitwiseXOR(1431655765, -1431655766)
+EndFunction
+
+Function ProfileBitwiseXNOR() Global
+	Binlib.BitwiseXNOR(0, 0)
+	Binlib.BitwiseXNOR(-1, -1)
+	Binlib.BitwiseXNOR(65535, -65536)
+	Binlib.BitwiseXNOR(1431655765, -1431655766)
+EndFunction
+
+Function ProfileBitwiseNOT() Global
+	Binlib.BitwiseNOT(0)
+	Binlib.BitwiseNOT(-1)
+	Binlib.BitwiseNOT(65535)
+	Binlib.BitwiseNOT(1431655765)
+EndFunction
+
 Function ProfileBitwiseFunctions(int times) Global
 	CallTimes("ProfileBitwiseAND", times)
 	CallTimes("ProfileBitwiseNAND", times)
 	CallTimes("ProfileBitwiseOR", times)
 	CallTimes("ProfileBitwiseNOR", times)
+	CallTimes("ProfileBitwiseXOR", times)
+	CallTimes("ProfileBitwiseXNOR", times)
+	CallTimes("ProfileBitwiseNOT", times)
 EndFunction
 
 Function ProfileOptimized() Global
@@ -156,7 +180,7 @@ Function Profile() Global
 	Debug.Notification("misc functions done")
 	ProfileABitwiseFunctions(10)
 	Debug.Notification("abitwise functions done")
-	ProfileBitwiseFunctions(25)
+	ProfileBitwiseFunctions(5)
 	Debug.Notification("bitwise functions done")
 	Debug.StopScriptProfiling("Binlib")
 	Debug.MessageBox("profiling done")
