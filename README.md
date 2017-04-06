@@ -1,42 +1,45 @@
 # Binlib
 
+## Distribution
+All you really need in order to use Binlib in your mod is `Binlib.psc`. Feel free to include it in your releases.
+
 ## Quick Reference
 ### Bitwise Operations
 No real explaination needed. They do what you'd expect
 ```papyrus
-int BitwiseAND(int A, int B)
-int BitwiseNAND(int A, int B)
-int BitwiseOR(int A, int B)
-int BitwiseNOR(int A, int B)
-int BitwiseXOR(int A, int B)
-int BitwiseXNOR(int A, int B)
-int Bitwise NOT(int A)
+int Function BitwiseAND(int A, int B)
+int Function BitwiseNAND(int A, int B)
+int Function BitwiseOR(int A, int B)
+int Function BitwiseNOR(int A, int B)
+int Function BitwiseXOR(int A, int B)
+int Function BitwiseXNOR(int A, int B)
+int Function BitwiseNOT(int A)
 ```
 ### ABitwise Operations
 Like the above, but operate on boolean arrays instead of ints
 ```papyrus
-bool[] ABitwiseAND(bool[] A, bool[] B)
-bool[] ABitwiseNAND(bool[] A, bool[] B)
-bool[] ABitwiseOR(bool[] A, bool[] B)
-bool[] ABitwiseNOR(bool[] A, bool[] B)
-bool[] ABitwiseXOR(bool[] A, bool[] B)
-bool[] ABitwiseXNOR(bool[] A, bool[] B)
-bool[] ABitwise NOT(bool[] A)
+bool[] Function ABitwiseAND(bool[] A, bool[] B)
+bool[] Function ABitwiseNAND(bool[] A, bool[] B)
+bool[] Function ABitwiseOR(bool[] A, bool[] B)
+bool[] Function ABitwiseNOR(bool[] A, bool[] B)
+bool[] Function ABitwiseXOR(bool[] A, bool[] B)
+bool[] Function ABitwiseXNOR(bool[] A, bool[] B)
+bool[] Function ABitwiseNOT(bool[] A)
 ```
 ### Integer-Array conversion
 ```papyrus
-int ArrayToInt(bool[] val)
-bool[] IntToArray(int val)
+int Function ArrayToInt(bool[] val)
+bool[] Function IntToArray(int val)
 ```
 ### Single Bit Operations
 ```papyrus
-int GetBit(int Val, int Bit)
-int SetBit(int Val, int Bit, int BitState)
+int Function GetBit(int Val, int Bit)
+int Function SetBit(int Val, int Bit, int BitState)
 ```
 ### Shifts
 ```papyrus
-int RightShift(int Val, int Amt)
-int LeftShift(int Val, int Amt)
+int Function RightShift(int Val, int Amt)
+int Function LeftShift(int Val, int Amt)
 ```
 
 ## Testing
