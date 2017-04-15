@@ -5,6 +5,7 @@ Function TestSuites()
 	describe("Boolean Functions", BooleanTestSuite())
 	describe("Bitwise Functions", BitwiseTestSuite())
 	describe("Shift Functions", ShiftTestSuite())
+	describe("Conversion Functions", ConversionTestSuite())
 EndFunction
 
 bool Function BooleanTestSuite()
@@ -129,6 +130,7 @@ bool Function RightShiftTestCases()
 	expect(Binlib.RightShift(1, 0), to, beEqualTo, 1)
 	expect(Binlib.RightShift(1, 1), to, beEqualTo, 0)
 	expect(Binlib.RightShift(2, 1), to, beEqualTo, 1)
+
 	Return True
 EndFunction
 
@@ -138,5 +140,27 @@ bool Function LeftShiftTestCases()
 	expect(Binlib.LeftShift(1, 1), to, beEqualTo, 2)
 	expect(Binlib.LeftShift(2, 1), to, beEqualTo, 4)
 	expect(Binlib.LeftShift(-1, 1), to, beEqualTo, -2)
+	Return True
+EndFunction
+
+bool Function ConversionTestSuite()
+	it("Conversion", ConversionTestCases())
+	Return True
+EndFunction
+
+bool Function ConversionTestCases()
+	expect(Binlib.ArrayToInt(Binlib.IntToArray(1)), to, beEqualTo, 1)
+	expect(Binlib.ArrayToInt(Binlib.IntToArray(2)), to, beEqualTo, 2)
+	expect(Binlib.ArrayToInt(Binlib.IntToArray(3)), to, beEqualTo, 3)
+	
+	expect(Binlib.ArrayToInt(Binlib.IntToArray(2147483646)), to, beEqualTo, 2147483646)
+	expect(Binlib.ArrayToInt(Binlib.IntToArray(2147483647)), to, beEqualTo, 2147483647)
+
+	expect(Binlib.ArrayToInt(Binlib.IntToArray(-1)), to, beEqualTo, -1)
+	expect(Binlib.ArrayToInt(Binlib.IntToArray(-2)), to, beEqualTo, -2)
+	expect(Binlib.ArrayToInt(Binlib.IntToArray(-3)), to, beEqualTo, -3)
+	
+	expect(Binlib.ArrayToInt(Binlib.IntToArray(-2147483647)), to, beEqualTo, -2147483647)
+	expect(Binlib.ArrayToInt(Binlib.IntToArray(-2147483646)), to, beEqualTo, -2147483646)
 	Return True
 EndFunction

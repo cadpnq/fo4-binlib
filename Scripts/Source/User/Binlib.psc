@@ -72,9 +72,14 @@ bool[] Function IntToArray(int val) Global
 	bool[] ReturnValue = new bool[32]
 
 	int x = val
+	If (val < 0)
+		x -= 2147483647
+		x -= 1
+		ReturnValue[31] = True
+	EndIf
 	int i = 0
-	While(i < 32)
-		ReturnValue[i] = Math.floor(x % 2)
+	While(i < 31)
+		ReturnValue[i] = Math.abs(Math.floor(x % 2)) == 1
 		x = x / 2
 		
 		i += 1
@@ -99,15 +104,23 @@ EndFunction
 int Function ArrayToInt(bool[] val) Global
 	int ReturnValue = 0
 	
+	If (val[31])
+		ReturnValue = -2147483647
+	EndIf
+	
 	int x = 1
 	int i = 0
-	While(i < 32)
+	While(i < 31)
 		If(val[i])
 			ReturnValue += x
 		EndIf
 		x += x
 		i += 1
 	EndWhile
+	
+	If (val[31])
+		ReturnValue -= 1
+	EndIf
 	
 	Return ReturnValue
 EndFunction
